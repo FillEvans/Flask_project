@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Авторизация
+{% endblock %}
+
+{% block body %}
+<h1>Авторизация</h1>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+<form method="POST">
+
+    <h1 class="h3 mb-3 fw-normal">Введите логин и пароль</h1>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" placeholder="Login" name="login">
+      <label>Логин</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" placeholder="Password" name="password">
+      <label>Пароль</label>
+    </div>
+
+    <div class="checkbox mb-3">
+        <a href="{{ url_for('register') }}">Регистрация</a>
+    </div>
+    <input class="w-100 btn btn-lg btn-primary" type="submit" value="Авторизация"></input>
+</form>
+{% endblock %}
